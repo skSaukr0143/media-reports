@@ -1,0 +1,15 @@
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\controller\ApiExceptionHandler.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\controller\ReportController.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\MediaReportApplication.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\model\FileKind.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\model\MediaFileInfo.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\model\MediaMeta.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\model\ScanFilter.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\model\ScanResult.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\model\Summary.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\model\TypeSummary.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\service\ExcelReportService.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\service\MediaProbeService.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\service\PdfReportService.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\service\ScanService.java
+C:\Users\saura\Downloads\media-report\media-report\src\main\java\com\example\mediareport\util\Fmt.java

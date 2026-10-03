@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Media Folder Report</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>Media Folder Report</h1>
+      <p>Point to a folder to count its videos, images and audios, then download the result as Excel or PDF.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel" aria-label="Scan settings">
+      <div class="path-row">
+        <label for="path" class="sr">Folder path</label>
+        <input id="path" type="text" autocomplete="off" spellcheck="false"
+               placeholder="Folder path, for example C:\Users\you\Videos or /home/you/media">
+        <button type="button" id="browseBtn" class="btn">Browse folders</button>
+      </div>
+
+      <div class="filters">
+        <fieldset class="types">
+          <legend>File types</legend>
+          <label class="chip video"><input type="checkbox" name="type" value="VIDEO" checked> Videos</label>
+          <label class="chip image"><input type="checkbox" name="type" value="IMAGE" checked> Images</label>
+          <label class="chip audio"><input type="checkbox" name="type" value="AUDIO" checked> Audios</label>
+        </fieldset>
+
+        <label class="field">Extensions
+          <input id="extensions" type="text" placeholder="mp4, jpg, mp3">
+        </label>
+        <label class="field">Name contains
+          <input id="name" type="text" placeholder="holiday">
+        </label>
+        <label class="field">Min size (MB)
+          <input id="minSizeMb" type="number" min="0" step="any">
+        </label>
+        <label class="field">Max size (MB)
+          <input id="maxSizeMb" type="number" min="0" step="any">
+        </label>
+        <label class="field">Min length (minutes)
+          <input id="minDurationMin" type="number" min="0" step="any">
+        </label>
+        <label class="field">Max length (minutes)
+          <input id="maxDurationMin" type="number" min="0" step="any">
+        </label>
+        <label class="check"><input type="checkbox" id="recursive" checked> Include subfolders</label>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="scanBtn" class="btn primary">Scan folder</button>
+        <span class="spacer"></span>
+        <button type="button" id="excelBtn" class="btn excel" disabled>Download Excel</button>
+        <button type="button" id="pdfBtn" class="btn pdf" disabled>Download PDF</button>
+        <button type="button" id="resetBtn" class="btn ghost">Reset filters</button>
+      </div>
+      <p class="hint">Excel and PDF reports use exactly the filters shown above. Length is read from video and audio files only.</p>
+    </section>
+
+    <div id="alert" class="alert" role="alert" hidden></div>
+    <div id="busy" class="busy" hidden>Scanning files. Large folders can take a minute.</div>
+
+    <section id="results" hidden>
+      <div class="cards" id="cards"></div>
+
+      <div class="table-head">
+        <h2>Files <span id="matchInfo"></span></h2>
+        <label class="inline">Rows per page
+          <select id="pageSize">
+            <option>50</option>
+            <option selected>100</option>
+            <option>250</option>
+            <option>500</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="table-wrap">
+        <table id="table">
+          <thead>
+            <tr>
+              <th class="num">#</th>
+              <th data-sort="name">Name</th>
+              <th data-sort="type">Type</th>
+              <th data-sort="extension">Ext</th>
+              <th data-sort="size" class="num">Size</th>
+              <th data-sort="duration" class="num">Length</th>
+              <th>Resolution</th>
+              <th data-sort="modified">Modified</th>
+              <th>Folder</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+          <tfoot id="tfoot"></tfoot>
+        </table>
+      </div>
+
+      <div class="pager">
+        <button type="button" id="prevBtn" class="btn small">Previous</button>
+        <span id="pageInfo"></span>
+        <button type="button" id="nextBtn" class="btn small">Next</button>
+      </div>
+
+      <section class="summary" aria-label="Summary">
+        <h2>Summary</h2>
+        <table id="summaryTable">
+          <thead>
+            <tr><th>Type</th><th class="num">Count</th><th class="num">Total size</th><th class="num">Total length</th></tr>
+          </thead>
+          <tbody id="summaryBody"></tbody>
+        </table>
+        <p id="unknownNote" class="hint" hidden></p>
+      </section>
+    </section>
+  </main>
+
+  <!-- folder picker -->
+  <dialog id="dialog">
+    <div class="dlg-head">
+      <strong>Choose a folder</strong>
+      <button type="button" id="dlgClose" class="btn small ghost">Close</button>
+    </div>
+    <div class="dlg-path" id="dlgPath"></div>
+    <ul id="dlgList" class="dlg-list"></ul>
+    <div class="dlg-foot">
+      <button type="button" id="dlgUp" class="btn small">Go up</button>
+      <button type="button" id="dlgSelect" class="btn small primary">Use this folder</button>
+    </div>
+  </dialog>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
